@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import UserHeader from "@/components/includes/UserHeader";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
 import { handleDarkTheme, handleLightTheme } from "@/store/actions/theme";
 import { Col, Row } from "antd";
 import { http } from "@/utils/http";
 import { handleBlogs } from "@/store/actions/blogs";
+import { useAppDispatch, useAppSelector } from "@/hooks/hook";
 
 const UserLayout = ({ children, title, inPost = false }: any) => {
   //***************************
   // define hooks
   //***************************
-  const router = useRouter();
-  const dispatch = useDispatch();
+  const router = useAppDispatch();
+  const dispatch = useAppDispatch();
   // *********************
   // store state
   // *********************
-  const sidebar = useSelector((state) => state?.sidebar?.sidebar);
-  const theme = useSelector((state) => state?.theme?.theme);
+  const theme = useAppSelector((state: any) => state?.theme?.theme);
   //***************************
   // define state
   //***************************
@@ -37,9 +35,9 @@ const UserLayout = ({ children, title, inPost = false }: any) => {
   };
 
   const handleGetBlog = () => {
-    http().posts((data) => {
+    http().posts((data: any) => {
       dispatch(handleBlogs(data.data))
-    }, (err) => { console.log(err) }
+    },
     )
   }
   // ***************************
@@ -50,11 +48,11 @@ const UserLayout = ({ children, title, inPost = false }: any) => {
   }, []);
   useEffect(() => {
     if (theme) {
-      document.querySelector("body").classList.add("light-body");
-      document.querySelector("body").classList.remove("dark-body");
+      document.querySelector("body")!.classList.add("light-body");
+      document.querySelector("body")!.classList.remove("dark-body");
     } else {
-      document.querySelector("body").classList.add("dark-body");
-      document.querySelector("body").classList.remove("light-body");
+      document.querySelector("body")!.classList.add("dark-body");
+      document.querySelector("body")!.classList.remove("light-body");
     }
   }, [theme]);
   return (

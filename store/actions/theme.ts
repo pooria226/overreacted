@@ -1,12 +1,12 @@
 import * as types from "../types";
 
-export const handleLightTheme = (data) => async (dispatch) => {
+export const handleLightTheme = () => async (dispatch: any) => {
   dispatch({
     type: types.LIGHT_THEME,
     payload: true,
   });
 };
-export const handleDarkTheme = (data) => async (dispatch) => {
+export const handleDarkTheme = () => async (dispatch: any) => {
   dispatch({
     type: types.DARK_THEME,
     payload: false,

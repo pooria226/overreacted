@@ -1,8 +1,9 @@
+import { PayloadAction } from "@reduxjs/toolkit";
 import * as types from "../types";
 const initialState = { theme: true };
 
-export const themeReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
+export const themeReducer = (state = initialState, action: PayloadAction) => {
+  switch (action.type) {
     case types.LIGHT_THEME:
       return {
         ...state,

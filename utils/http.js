@@ -105,7 +105,6 @@ function http(cookie = undefined, router = undefined) {
         .get("https://jsonplaceholder.typicode.com/posts")
         .then(callback)
         .catch((err) => {
-          errors_handler(err);
           if (errCB) errCB(err);
         });
     },

@@ -1,23 +1,20 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import UserLayout from '@/components/layouts/UserLayout'
 import PersonalItem from '@/components/shared/PersonalItem'
 import BlogItems from '@/components/shared/BlogItems'
-import MarginTop from '@/components/shared/MarginTop'
-import { http } from '../utils/http'
 import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from 'react-redux'
-import { handleBlogs } from "@/store/actions/blogs";
+import { useAppDispatch, useAppSelector, } from '@/hooks/hook'
 export default function Posts() {
   //***************************
   // define hooks
   //***************************
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   // *********************
   // store state
   // *********************
-  const blogs = useSelector((state) => state?.blogs?.data);
-  const theme = useSelector((state) => state?.theme?.theme);
+  const blogs = useAppSelector((state: any) => state?.blogs?.data);
+  const theme = useAppSelector((state: any) => state?.theme?.theme);
 
   return <UserLayout title="Posts">
     <PersonalItem theme={theme} />
