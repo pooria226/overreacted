@@ -1,0 +1,50 @@
+@import "../theme/index";
+.lightItem {
+  margin-top: 3.5rem;
+  margin-bottom: 0.4375rem;
+  a {
+    color: $link;
+    font-size: 1.75rem;
+    font-family: Montserrat, sans-serif;
+    line-height: 1.1;
+    font-weight: 900;
+  }
+  .time {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+  .text {
+    font-family: "Merriweather", "Georgia", serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    font-kerning: normal;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+.darkItem {
+  margin-top: 3.5rem;
+  margin-bottom: 0.4375rem;
+  color: $dark-text;
+  a {
+    color: $focused;
+    font-size: 1.75rem;
+    font-family: Montserrat, sans-serif;
+    line-height: 1.1;
+    font-weight: 900;
+  }
+  .time {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+  .text {
+    font-family: "Merriweather", "Georgia", serif;
+    font-weight: 400;
+    word-wrap: break-word;
+    font-kerning: normal;
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}

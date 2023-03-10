@@ -1,0 +1,15 @@
+@import "../theme/index";
+.lightLink {
+  font-family: "Merriweather", "Georgia", serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: $link;
+  box-shadow: 0 1px 0 0 $link;
+}
+.darkLink {
+  font-family: "Merriweather", "Georgia", serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: $focused;
+  box-shadow: 0 1px 0 0 $focused;
+}

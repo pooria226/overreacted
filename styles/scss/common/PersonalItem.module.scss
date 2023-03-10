@@ -1,0 +1,26 @@
+@import "../theme/index";
+.wrapperImg {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 56px;
+  height: 56px;
+}
+.lightText {
+  font-family: "Merriweather", "Georgia", serif;
+  font-weight: 400;
+  font-size: 18px;
+  a {
+    color: $link;
+    box-shadow: 0 1px 0 0 $link;
+  }
+}
+.darkText {
+  font-family: "Merriweather", "Georgia", serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: $dark-text;
+  a {
+    color: $focused;
+    box-shadow: 0 1px 0 0 $focused;
+  }
+}
