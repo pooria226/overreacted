@@ -1,44 +1,45 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import UserHeader from "@/components/includes/UserHeader";
-import { handleDarkTheme, handleLightTheme } from "@/store/actions/theme";
 import { Col, Row } from "antd";
-import { http } from "@/utils/http";
-import { handleBlogs } from "@/store/actions/blogs";
-import { useAppDispatch, useAppSelector } from "@/hooks/hook";
+import { useDispatch, useSelector } from "react-redux";
+import { setTheme } from "@/store/themeSlice";
+
 
 const UserLayout = ({ children, title, inPost = false }: any) => {
+
   //***************************
-  // define hooks
+  // Import Hooks
   //***************************
-  const router = useAppDispatch();
-  const dispatch = useAppDispatch();
-  // *********************
-  // store state
-  // *********************
-  const theme = useAppSelector((state: any) => state?.theme?.theme);
+
+  const dispath = useDispatch()
+
+  //***************************
+  // Store State
+  //***************************
+
+  const theme = useSelector((state: any) => state.theme);
+
   //***************************
   // define state
   //***************************
+
   const AppName = process.env.NEXT_PUBLIC_APPNAME;
-  const [inMobile, setInMobile] = useState(false);
+
   //***************************
   // define function
   //***************************
 
   const handleChangeTheme = () => {
     if (theme) {
-      dispatch(handleDarkTheme());
+      dispath(setTheme(false))
     } else {
-      dispatch(handleLightTheme());
+      dispath(setTheme(true))
     }
   };
 
   const handleGetBlog = () => {
-    http().posts((data: any) => {
-      dispatch(handleBlogs(data.data))
-    },
-    )
+
   }
   // ***************************
   // define useEffect

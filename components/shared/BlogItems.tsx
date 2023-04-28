@@ -9,7 +9,7 @@ export default function BlogItems({ blogs = [], theme }: any) {
             return <Col key={index} span={24}>
                 <div className={theme ? Styles.lightItem : Styles.darkItem}>
                     <div>
-                        <Link href={`/${item?.title.split(' ').join('-')}`}>
+                        <Link href={`${item?.id}`}>
                             {item?.title}
                         </Link>
                     </div>

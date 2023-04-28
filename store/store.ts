@@ -1,20 +1,19 @@
-import { configureStore } from "@reduxjs/toolkit";
-import thunk from "redux-thunk";
 import { createWrapper } from "next-redux-wrapper";
-import rootReducer from "./reducers";
-// initial states here
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .prepend(thunk)
-      // prepend and concat calls can be chained
-      .concat(),
-});
+import { configureStore } from "@reduxjs/toolkit";
+import { api } from "./apiSlice";
+import themeReducer from "./themeSlice";
 
-// assigning store to next wrapper
-const makeStore = () => store;
+const rootReducer = {
+  [api.reducerPath]: api.reducer,
+  theme: themeReducer,
+};
+
+export const makeStore = () =>
+  configureStore({
+    reducer: rootReducer,
+    devTools: true,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(api.middleware),
+  });
+
 export const wrapper = createWrapper(makeStore, { debug: true });
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
